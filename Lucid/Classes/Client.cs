@@ -21,7 +21,6 @@ namespace Lucid.Classes
         {
             try
             {
-                
                 // Attempt to login into the given token
                 _client.Login(_token);
                 // Attempting to create nessesary handlers
