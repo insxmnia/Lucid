@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pastel</name>
+    </assembly>
+    <members>
+        <member name="T:Pastel.ConsoleExtensions">
+            <summary>
+            Controls colored console output by <see langword="Pastel"/>.
+            </summary>
+        </member>
+        <member name="M:Pastel.ConsoleExtensions.Enable">
+            <summary>
+            Enables any future console color output produced by Pastel.
+            </summary>
+        </member>
+        <member name="M:Pastel.ConsoleExtensions.Disable">
+            <summary>
+            Disables any future console color output produced by Pastel.
+            </summary>
+        </member>
+        <member name="M:Pastel.ConsoleExtensions.Pastel(System.String,System.Drawing.Color)">
+            <summary>
+            Returns a string wrapped in an ANSI foreground color code using the specified color.
+            </summary>
+            <param name="input">The string to color.</param>
+            <param name="color">The color to use on the specified string.</param>
+        </member>
+        <member name="M:Pastel.ConsoleExtensions.Pastel(System.String,System.String)">
+            <summary>
+            Returns a string wrapped in an ANSI foreground color code using the specified color.
+            </summary>
+            <param name="input">The string to color.</param>
+            <param name="hexColor">The color to use on the specified string.<para>Supported format: [#]RRGGBB.</para></param>
+        </member>
+        <member name="M:Pastel.ConsoleExtensions.PastelBg(System.String,System.Drawing.Color)">
+            <summary>
+            Returns a string wrapped in an ANSI background color code using the specified color.
+            </summary>
+            <param name="input">The string to color.</param>
+            <param name="color">The color to use on the specified string.</param>
+        </member>
+        <member name="M:Pastel.ConsoleExtensions.PastelBg(System.String,System.String)">
+            <summary>
+            Returns a string wrapped in an ANSI background color code using the specified color.
+            </summary>
+            <param name="input">The string to color.</param>
+            <param name="hexColor">The color to use on the specified string.<para>Supported format: [#]RRGGBB.</para></param>
+        </member>
+    </members>
+</doc>
