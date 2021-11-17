@@ -13,6 +13,7 @@ namespace Lucid.Classes
     {
         public static void Log(LogLevel LogLevel, string content)
         {
+            // Will make it log to a file in a later update, cba adding like one-two lines of code
             switch (LogLevel)
             {
                 case LogLevel.Info:
@@ -36,6 +37,7 @@ namespace Lucid.Classes
             }
         }
 
+        // No really needed but it makes getting input easier, instead of manually typing out the 2 lines of code etc you can use a singular command 
         public static string Input(string content)
         {
             Console.Write(content);
@@ -67,6 +69,10 @@ namespace Lucid.Classes
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
+            }
+            if (File.Exists(path + "Config.json"))
+            {
+                File.Delete(path + "Config.json");
             }
             string config_data = "{\n    " + $"'token': '{Convert.ToBase64String(Encoding.UTF8.GetBytes(client._token))}',\n    'prefix': '{client._prefix}'" + "\n}";
             FileStream file = File.Create(path + "Config.json");

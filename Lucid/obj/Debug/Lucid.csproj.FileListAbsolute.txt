@@ -1,0 +1,15 @@
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Lucid.exe.config
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Lucid.exe
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Lucid.pdb
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Anarchy.dll
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Leaf.xNet.dll
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Pastel.dll
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\websocket-sharp.dll
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Leaf.xNet.xml
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\bin\Debug\Pastel.xml
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\obj\Debug\Lucid.csproj.AssemblyReference.cache
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\obj\Debug\Lucid.csproj.CoreCompileInputs.cache
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\obj\Debug\Lucid.exe
+C:\Users\Exodus\Documents\GitHub\Lucid\Lucid\obj\Debug\Lucid.pdb
