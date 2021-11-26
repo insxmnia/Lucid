@@ -35,29 +35,56 @@ namespace Lucid
             Classes.Client client = new Classes.Client();
             client._client = new Discord.Gateway.DiscordSocketClient();
             Functions.Banner();
-
-            // Console title change
-            Console.Title  = $"[Lucid.ʙᴇᴛᴀ] - Awaiting Token...";
-            client._token  = Classes.Functions.Input($"| {DateTime.Now.ToString("HH:mm")} | [".Pastel("CCDDFC") + "Lucid".Pastel("00AAFF") + "] | Discord Token: ".Pastel("CCDDFC"));
-            client._prefix = Classes.Functions.Input($"| {DateTime.Now.ToString("HH:mm")} | [".Pastel("CCDDFC") + "Lucid".Pastel("00AAFF") + "] | Command Prefix: ".Pastel("CCDDFC"));
-
-            // Calling the banner everytime i need to clear something as it contains the Console.Clear Code
-            Functions.Banner();
-            Console.Title = $"[Lucid.ʙᴇᴛᴀ] - Connecting...";
-            if (client.Run())
+            Functions.Log(Enums.LogLevel.Event, "Found Config.json, loading saved token and prefix");
+            // Checking if config exists
+            if (Functions.ConfigCheck())
             {
-                // Create a config to add auto login implementation (Too lazy to do it atm)
-                Functions.CreateConfig(client);
-                while (true)
-                {
-                    // You can do this or turn the main function into a void and thread it, but im too lazy so ill just do this
-                    continue;
-                }
-            }
+                // Console title change
+                client._token = Encoding.UTF8.GetString(Convert.FromBase64String(Functions.GetConfigElement("token").ToString()));
+                client._prefix = Functions.GetConfigElement("prefix");
 
-            // If connection to the token fails it will pause for 3 seconds and then exit
-            Thread.Sleep(3000);
-            Environment.Exit(0);
+                // Calling the banner everytime i need to clear something as it contains the Console.Clear Code
+                Functions.Banner();
+                Console.Title = $"[Lucid.ʙᴇᴛᴀ] - Connecting...";
+                if (client.Run())
+                {
+                    while (true)
+                    {
+                        // You can do this or turn the main function into a void and thread it, but im too lazy so ill just do this
+                        continue;
+                    }
+                }
+
+                // If connection to the token fails it will pause for 3 seconds and then exit
+                Thread.Sleep(3000);
+                Environment.Exit(0);
+            }
+            else
+            {
+
+                // Console title change
+                Console.Title = $"[Lucid.ʙᴇᴛᴀ] - Awaiting Token...";
+                client._token = Classes.Functions.Input($"| {DateTime.Now.ToString("HH:mm")} | [".Pastel("CCDDFC") + "Lucid".Pastel("00AAFF") + "] | Discord Token: ".Pastel("CCDDFC"));
+                client._prefix = Classes.Functions.Input($"| {DateTime.Now.ToString("HH:mm")} | [".Pastel("CCDDFC") + "Lucid".Pastel("00AAFF") + "] | Command Prefix: ".Pastel("CCDDFC"));
+
+                // Calling the banner everytime i need to clear something as it contains the Console.Clear Code
+                Functions.Banner();
+                Console.Title = $"[Lucid.ʙᴇᴛᴀ] - Connecting...";
+                if (client.Run())
+                {
+                    // Create a config to make the sniper auto login, instead of typing in the prefix and token every time
+                    Functions.CreateConfig(client);
+                    while (true)
+                    {
+                        // You can do this or turn the main function into a void and thread it, but im too lazy so ill just do this
+                        continue;
+                    }
+                }
+
+                // If connection to the token fails it will pause for 3 seconds and then exit
+                Thread.Sleep(3000);
+                Environment.Exit(0);
+            }
             
             
 

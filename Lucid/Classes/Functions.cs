@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using static Lucid.Classes.Enums;
 using Pastel;
 using System.IO;
-
+using Newtonsoft.Json;
 namespace Lucid.Classes
 {
     class Functions
@@ -79,6 +79,43 @@ namespace Lucid.Classes
             byte[] encoded_data = Encoding.UTF8.GetBytes(config_data);
             file.Write(encoded_data, 0, encoded_data.Length);
             file.Close();
+        }
+
+        public static bool ConfigCheck()
+        {
+            var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\Lucid\\";
+            if (File.Exists(path + "Config.json"))
+            {
+                if (File.ReadAllText(path + "Config.json").Length > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static dynamic GetConfigElement(string element)
+        {
+            var config_path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\Lucid\\Config.json";
+            dynamic temp = JsonConvert.DeserializeObject(File.ReadAllText(config_path));
+            try
+            {
+                dynamic data = temp[element];
+                return temp[element];
+            }
+            catch
+            {
+                return "Element doesn't exist";
+            }
+            
         }
 
     }
