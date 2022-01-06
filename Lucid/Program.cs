@@ -35,10 +35,11 @@ namespace Lucid
             Classes.Client client = new Classes.Client();
             client._client = new Discord.Gateway.DiscordSocketClient();
             Functions.Banner();
-            Functions.Log(Enums.LogLevel.Event, "Found Config.json, loading saved token and prefix");
+            
             // Checking if config exists
             if (Functions.ConfigCheck())
             {
+                Functions.Log(Enums.LogLevel.Event, "Found Config.json, loading saved token and prefix");
                 // Console title change
                 client._token = Encoding.UTF8.GetString(Convert.FromBase64String(Functions.GetConfigElement("token").ToString()));
                 client._prefix = Functions.GetConfigElement("prefix");
@@ -55,7 +56,19 @@ namespace Lucid
                     }
                 }
 
-                // If connection to the token fails it will pause for 3 seconds and then exit
+                // If connection to the token fails through the config, ask to input token manually
+                Thread.Sleep(3000);
+                Functions.Banner();
+                client._token = Classes.Functions.Input($"| {DateTime.Now.ToString("HH:mm")} | [".Pastel("CCDDFC") + "Lucid".Pastel("00AAFF") + "] | Discord Token: ".Pastel("CCDDFC"));
+                if (client.Run())
+                {
+                    Functions.CreateConfig(client);
+                    while (true)
+                    {
+                        // You can do this or turn the main function into a void and thread it, but im too lazy so ill just do this
+                        continue;
+                    }
+                }
                 Thread.Sleep(3000);
                 Environment.Exit(0);
             }

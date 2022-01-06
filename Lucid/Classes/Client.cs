@@ -16,6 +16,7 @@ namespace Lucid.Classes
         public DiscordSocketClient _client { get; set; }
         public string _token { get; set; }
         public string _prefix { get; set; }
+        public string _webhookurl { get; set; }
 
         public bool Run()
         {

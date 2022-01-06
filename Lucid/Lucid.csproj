@@ -65,6 +65,7 @@
     <Compile Include="Classes\Functions.cs" />
     <Compile Include="Classes\Handlers.cs" />
     <Compile Include="Commands\Default.cs" />
+    <Compile Include="Commands\MainCommands.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

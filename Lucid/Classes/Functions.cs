@@ -80,6 +80,47 @@ namespace Lucid.Classes
             file.Write(encoded_data, 0, encoded_data.Length);
             file.Close();
         }
+        public static void AddToConfig(string item, string data)
+        {
+            var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\Lucid\\";
+            string current_config = string.Empty;
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            if (File.Exists(path + "Config.json"))
+            {
+                current_config = File.ReadAllText(path + "Config.json").Replace("{\n", "").Replace("\n}", "");
+                File.Delete(path + "Config.json");
+            }
+            string config_data = "{\n" + $"{current_config},\n    '{item}': '{data}'" + "\n}";
+            FileStream file = File.Create(path + "Config.json");
+            byte[] encoded_data = Encoding.UTF8.GetBytes(config_data);
+            file.Write(encoded_data, 0, encoded_data.Length);
+            file.Close();
+
+        }
+        public static void UpdateConfigItem(string item, string data)
+        {
+            var path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\Lucid\\";
+            string current_config = string.Empty;
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            if (File.Exists(path + "Config.json"))
+            {
+                current_config = File.ReadAllText(path + "Config.json");
+                File.Delete(path + "Config.json");
+            }
+            dynamic json = JsonConvert.DeserializeObject<dynamic>(current_config);
+            json[item] = data;
+            FileStream file = File.Create(path + "Config.json");
+            byte[] encoded_data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(json));
+            file.Write(encoded_data, 0, encoded_data.Length);
+            file.Close();
+
+        }
 
         public static bool ConfigCheck()
         {
@@ -105,15 +146,15 @@ namespace Lucid.Classes
         public static dynamic GetConfigElement(string element)
         {
             var config_path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\Lucid\\Config.json";
-            dynamic temp = JsonConvert.DeserializeObject(File.ReadAllText(config_path));
-            try
-            {
-                dynamic data = temp[element];
-                return temp[element];
-            }
-            catch
+            dynamic temp = JsonConvert.DeserializeObject<dynamic>(File.ReadAllText(config_path));
+            dynamic data = temp[element];
+            if(data == null)
             {
                 return "Element doesn't exist";
+            }
+            else
+            {
+                return temp[element];
             }
             
         }
