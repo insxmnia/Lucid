@@ -24,7 +24,7 @@ namespace Lucid.Classes
             Functions.Log(Enums.LogLevel.Event, $"Connected To {client.User.Username.Pastel("CC99FF")}#{client.User.Discriminator.ToString().Pastel("CC99FF")}");
             Functions.Log(Enums.LogLevel.Event, $"Prefix [{client.CommandHandler.Prefix.Pastel("CC99FF")}]");
         }
-        public static void OnMessageReceived(DiscordSocketClient client, MessageEventArgs args)
+        public static async void OnMessageReceived(DiscordSocketClient client, MessageEventArgs args)
         {
             #region Local Variables
             var message = args.Message;
@@ -61,7 +61,7 @@ namespace Lucid.Classes
                             try
                             {
                                 redeem_time.Start();
-                                client.RedeemGift(code);
+                                await client.RedeemGiftAsync(code);
                                 redeem_time.Stop();
                                 string Sender = $"{author.User.Username}#{author.User.Discriminator}";
                                 string Owner = $"{client.GetGift(code).Gifter.Username}#{client.GetGift(code).Gifter.Discriminator}";
@@ -205,7 +205,7 @@ namespace Lucid.Classes
                             try
                             {
                                 redeem_time.Start();
-                                client.RedeemGift(code);
+                                await client.RedeemGiftAsync(code);
                                 redeem_time.Stop();
                                 string Sender = $"{author.User.Username}#{author.User.Discriminator}";
                                 string Owner = $"{client.GetGift(code).Gifter.Username}#{client.GetGift(code).Gifter.Discriminator}";
