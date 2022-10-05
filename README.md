@@ -1,4 +1,4 @@
-## ✨ Lucid Sniper ✨
+## ✨ Lucid Sniper ✨ [CURRENTLY BROKEN]
 #### Simple **open-source** discord nitro sniper made in **C#** using the anarchy wrapper.
 ![LunaBanner](https://user-images.githubusercontent.com/73559155/141868864-948c59fa-8f2b-49d7-a7ff-5ae837496f93.png)
 ---------------------------
